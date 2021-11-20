@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
+import java.util.Objects;
+
 /**
  * @author Vaidic Joshi
  * @date 20/11/21
@@ -12,20 +14,18 @@ import lombok.Setter;
 @Getter
 public abstract class BillableCommunity {
 
-  @NonNull private final Room room;
-  @NonNull private final Double ratio;
+  @NonNull private final Integer allocatedWaterPerPersonLts;
+  @NonNull private final Integer numberOfBillableDaysInMonth;
+  @Setter private Room room;
+  @Setter private Double ratio;
 
-  @Setter private int allocatedWaterPerPersonLts;
-  @Setter private int numberOfBillableDaysInMonth;
-
-  private Integer guests;
-
-  public BillableCommunity(@NonNull Room room, @NonNull Double ratio) {
-    this.room = room;
-    this.ratio = ratio;
-    this.guests = 0;
-    initializeBillableCommunity();
+  public BillableCommunity(
+      @NonNull Integer allocatedWaterPerPersonLts, @NonNull Integer numberOfBillableDaysInMonth) {
+    this.allocatedWaterPerPersonLts = allocatedWaterPerPersonLts;
+    this.numberOfBillableDaysInMonth = numberOfBillableDaysInMonth;
   }
+
+  @Setter private int guests;
 
   public void addGuests(int guests) {
     this.guests += guests;
@@ -33,5 +33,12 @@ public abstract class BillableCommunity {
 
   public abstract int getTotalPeople();
 
-  public abstract void initializeBillableCommunity();
+  public void initializeBillableCommunity(@NonNull Room room, @NonNull Double ratio) {
+    this.ratio = ratio;
+    this.room = room;
+  }
+
+  public boolean isInitializedBillableCommunity() {
+    return Objects.nonNull(room) && Objects.nonNull(ratio);
+  }
 }

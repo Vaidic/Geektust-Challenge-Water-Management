@@ -1,8 +1,14 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.enums;
 
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.AddGuestService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.AllotWaterService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.BillOperationService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.OperationService;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+
+import java.util.function.Supplier;
 
 /**
  * @author Vaidic Joshi
@@ -11,10 +17,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Getter
 public enum Operator {
-  ALLOT_WATER(2),
-  ADD_GUESTS(1),
-  BILL(0);
+  ALLOT_WATER(2, AllotWaterService::getInstance),
+  ADD_GUESTS(1, AddGuestService::getInstance),
+  BILL(0, BillOperationService::getInstance);
 
   @NonNull private Integer numberOfArguments;
-  //    @NonNull private Supplier<? extends WaterOperationService> operationService;
+  @NonNull private Supplier<? extends OperationService> operationService;
 }

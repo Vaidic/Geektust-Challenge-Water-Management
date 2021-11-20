@@ -1,7 +1,6 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.model;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.enums.GeekHeightsRoom;
-import in.vaidicjoshi.geektrust.backend.watermanagement.enums.Room;
 import lombok.NonNull;
 
 /**
@@ -10,19 +9,14 @@ import lombok.NonNull;
  */
 public class GeekHeightsCommunity extends BillableCommunity {
 
-  public GeekHeightsCommunity(@NonNull Room room, @NonNull Double ratio) {
-    super(room, ratio);
+  public GeekHeightsCommunity(
+      @NonNull Integer allocatedWaterPerPersonLts, @NonNull Integer numberOfBillableDaysInMonth) {
+    super(allocatedWaterPerPersonLts, numberOfBillableDaysInMonth);
   }
 
   @Override
   public int getTotalPeople() {
     GeekHeightsRoom room = (GeekHeightsRoom) getRoom();
     return room.getNumberOfPeople() + getGuests();
-  }
-
-  @Override
-  public void initializeBillableCommunity() {
-    this.setAllocatedWaterPerPersonLts(10);
-    this.setNumberOfBillableDaysInMonth(30);
   }
 }
