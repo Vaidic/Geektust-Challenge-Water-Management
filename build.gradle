@@ -25,6 +25,7 @@ jacocoTestReport { //Please do not change this
 jar {
     archiveBaseName = 'geektrust' //Please do not change this final artifact name
     version = null               //Please do not change this final artifact version
+//    archiveBaseVersion = null     //Please do not change this final artifact version
     manifest {
         attributes 'Main-Class': 'in.vaidicjoshi.geektrust.backend.watermanagement.WaterBillApp'
         //Change this to the main class of your program which will be executed
