@@ -30,7 +30,7 @@ public class BillOperationService implements OperationService {
                 community.getApartmentType().getNumberOfPeople(),
                 community.getAllocatedWaterPerPersonLts(),
                 community.getNumberOfBillableDaysInMonth(),
-                community.getRatio());
+                1.0 * community.getCorporationShare() / community.getTotalShare());
 
     billValue +=
         new BoreWellBillGenerationService()
@@ -38,7 +38,9 @@ public class BillOperationService implements OperationService {
                 community.getApartmentType().getNumberOfPeople(),
                 community.getAllocatedWaterPerPersonLts(),
                 community.getNumberOfBillableDaysInMonth(),
-                1 - community.getRatio());
+                1.0
+                    * (community.getTotalShare() - community.getCorporationShare())
+                    / community.getTotalShare());
 
     billValue +=
         new TankWaterBillGenerationService()

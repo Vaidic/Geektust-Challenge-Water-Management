@@ -17,7 +17,8 @@ public abstract class BillableCommunity {
   @NonNull private final Integer allocatedWaterPerPersonLts;
   @NonNull private final Integer numberOfBillableDaysInMonth;
   @Setter private ApartmentType apartmentType;
-  @Setter private Double ratio;
+  @Setter private Integer corporationShare;
+  @Setter private Integer totalShare;
 
   public BillableCommunity(
       @NonNull Integer allocatedWaterPerPersonLts, @NonNull Integer numberOfBillableDaysInMonth) {
@@ -31,22 +32,22 @@ public abstract class BillableCommunity {
     this.guests += guests;
   }
 
-  public Integer getTotalPeople() {
-    ApartmentType room = getApartmentType();
-    return room.getNumberOfPeople() + getGuests();
-  }
+  public abstract Integer getTotalPeople();
 
-  public int getTotalWaterConsumedInAMonth() {
-    return allocatedWaterPerPersonLts * numberOfBillableDaysInMonth * getTotalPeople();
-  }
+  public abstract int getTotalWaterConsumedInAMonth();
 
   public void initializeBillableCommunity(
-      @NonNull ApartmentType apartmentType, @NonNull Double ratio) {
-    this.ratio = ratio;
+      @NonNull ApartmentType apartmentType,
+      @NonNull Integer corporationShare,
+      @NonNull Integer totalShare) {
+    this.totalShare = totalShare;
+    this.corporationShare = corporationShare;
     this.apartmentType = apartmentType;
   }
 
   public boolean isInitializedBillableCommunity() {
-    return Objects.nonNull(apartmentType) && Objects.nonNull(ratio);
+    return Objects.nonNull(apartmentType)
+        && Objects.nonNull(totalShare)
+        && Objects.nonNull(corporationShare);
   }
 }
