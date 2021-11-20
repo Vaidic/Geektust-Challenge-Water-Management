@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  */
 @RequiredArgsConstructor
 @Getter
-public enum GeekHeightsRoom {
+public enum GeekHeightsRoom implements Room {
   TW0_BEDROOM_APARTMENT(2, 3),
   THREE_BEDROOM_APARTMENT(3, 5);
   @NonNull private Integer numberOfRooms;
