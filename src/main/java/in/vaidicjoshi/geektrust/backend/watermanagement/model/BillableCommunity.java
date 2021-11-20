@@ -31,7 +31,14 @@ public abstract class BillableCommunity {
     this.guests += guests;
   }
 
-  public abstract Integer getTotalPeople();
+  public Integer getTotalPeople() {
+    ApartmentType room = getApartmentType();
+    return room.getNumberOfPeople() + getGuests();
+  }
+
+  public int getTotalWaterConsumedInAMonth() {
+    return allocatedWaterPerPersonLts * numberOfBillableDaysInMonth * getTotalPeople();
+  }
 
   public void initializeBillableCommunity(
       @NonNull ApartmentType apartmentType, @NonNull Double ratio) {
