@@ -10,7 +10,7 @@ import java.util.List;
  * @author Vaidic Joshi
  * @date 20/11/21
  */
-public class AddGuestService implements CommunityOperationService {
+public class AddGuestService implements OperationService {
   @Getter private static final AddGuestService instance = new AddGuestService();
 
   private AddGuestService() {}

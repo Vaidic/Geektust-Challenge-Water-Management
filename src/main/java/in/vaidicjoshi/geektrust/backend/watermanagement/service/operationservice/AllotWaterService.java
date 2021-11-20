@@ -11,7 +11,7 @@ import java.util.List;
  * @author Vaidic Joshi
  * @date 20/11/21
  */
-public class AllotWaterService implements CommunityOperationService {
+public class AllotWaterService implements OperationService {
   @Getter private static final AllotWaterService instance = new AllotWaterService();
 
   private AllotWaterService() {}
