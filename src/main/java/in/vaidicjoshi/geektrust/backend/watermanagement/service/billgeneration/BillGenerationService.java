@@ -1,5 +1,8 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.service.billgeneration;
 
+import lombok.Getter;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -9,13 +12,21 @@ import java.util.stream.Collectors;
  * @date 20/11/21
  */
 public abstract class BillGenerationService {
-  private final Map<Integer, Double> maxUptoBillRate;
+  @Getter private final Map<Integer, Double> maxUptoBillRate;
+  private final int people;
+  private final int lts;
+  private final int days;
+  private final double ratio;
 
-  public BillGenerationService(Map<Integer, Double> maxUptoBillRate) {
-    this.maxUptoBillRate = maxUptoBillRate;
+  public BillGenerationService(int people, int lts, int days, double ratio) {
+    this.maxUptoBillRate = new HashMap<>();
+    this.people = people;
+    this.lts = lts;
+    this.days = days;
+    this.ratio = ratio;
   }
 
-  public double generateBill(int people, int lts, int days, double ratio) {
+  public double generateBill() {
 
     double totalConsumption = people * lts * days * ratio;
     double bill = 0;

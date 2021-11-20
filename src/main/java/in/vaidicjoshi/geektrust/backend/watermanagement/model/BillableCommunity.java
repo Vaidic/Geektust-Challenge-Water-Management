@@ -19,14 +19,13 @@ public abstract class BillableCommunity {
   @Setter private ApartmentType apartmentType;
   @Setter private Integer corporationShare;
   @Setter private Integer totalShare;
+  @Setter private int guests;
 
   public BillableCommunity(
       @NonNull Integer allocatedWaterPerPersonLts, @NonNull Integer numberOfBillableDaysInMonth) {
     this.allocatedWaterPerPersonLts = allocatedWaterPerPersonLts;
     this.numberOfBillableDaysInMonth = numberOfBillableDaysInMonth;
   }
-
-  @Setter private int guests;
 
   public void addGuests(int guests) {
     this.guests += guests;

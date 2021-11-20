@@ -21,9 +21,6 @@ import java.util.stream.Collectors;
 public enum ApartmentType {
   TW0_BEDROOM_APARTMENT(2, 3),
   THREE_BEDROOM_APARTMENT(3, 5);
-  @NonNull private Integer numberOfRooms;
-  @NonNull private Integer numberOfPeople;
-
   private static Map<Integer, ApartmentType> lookup = new HashMap<>();
 
   static {
@@ -31,6 +28,9 @@ public enum ApartmentType {
         Arrays.stream(ApartmentType.values())
             .collect(Collectors.toMap(ApartmentType::getNumberOfRooms, Function.identity()));
   }
+
+  @NonNull private Integer numberOfRooms;
+  @NonNull private Integer numberOfPeople;
 
   public static ApartmentType fromNumberOfRooms(int rooms) throws WaterBillException {
     return Optional.ofNullable(lookup.get(rooms))

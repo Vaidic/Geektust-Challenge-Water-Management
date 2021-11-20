@@ -5,8 +5,8 @@ package in.vaidicjoshi.geektrust.backend.watermanagement.exception;
  * @date 20/11/21
  */
 public class WaterBillException extends RuntimeException {
-  private static final long serialVersionUID = -195628261663783819L;
   public static final String INVALID_COMMAND = "INVALID_COMMAND";
+  private static final long serialVersionUID = -195628261663783819L;
 
   /** Constructs a WaterBillException with no detail message. */
   public WaterBillException() {

@@ -25,30 +25,29 @@ public class BillOperationService implements OperationService {
     double billValue = 0.0;
 
     billValue +=
-        new CorporationBillGenerationService()
-            .generateBill(
+        new CorporationBillGenerationService(
                 community.getApartmentType().getNumberOfPeople(),
                 community.getAllocatedWaterPerPersonLts(),
                 community.getNumberOfBillableDaysInMonth(),
-                1.0 * community.getCorporationShare() / community.getTotalShare());
+                1.0 * community.getCorporationShare() / community.getTotalShare())
+            .generateBill();
 
     billValue +=
-        new BoreWellBillGenerationService()
-            .generateBill(
+        new BoreWellBillGenerationService(
                 community.getApartmentType().getNumberOfPeople(),
                 community.getAllocatedWaterPerPersonLts(),
                 community.getNumberOfBillableDaysInMonth(),
                 1.0
                     * (community.getTotalShare() - community.getCorporationShare())
-                    / community.getTotalShare());
+                    / community.getTotalShare())
+            .generateBill();
 
     billValue +=
-        new TankWaterBillGenerationService()
-            .generateBill(
+        new TankWaterBillGenerationService(
                 community.getGuests(),
                 community.getAllocatedWaterPerPersonLts(),
-                community.getNumberOfBillableDaysInMonth(),
-                1);
+                community.getNumberOfBillableDaysInMonth())
+            .generateBill();
     bill.add(Integer.toString((int) Math.ceil(billValue)));
     return bill.toString();
   }
