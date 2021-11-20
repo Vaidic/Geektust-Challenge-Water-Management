@@ -24,7 +24,10 @@ public abstract class BillGenerationService {
     this.lts = lts;
     this.days = days;
     this.ratio = ratio;
+    updateMaxUptoBillRate();
   }
+
+  protected abstract void updateMaxUptoBillRate();
 
   public double generateBill() {
 
