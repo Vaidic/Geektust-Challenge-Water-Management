@@ -17,8 +17,8 @@ public abstract class BillableCommunity {
   @NonNull private final Integer allocatedWaterPerPersonLts;
   @NonNull private final Integer numberOfBillableDaysInMonth;
   @Setter private ApartmentType apartmentType;
-  @Setter private Integer corporationShare;
-  @Setter private Integer totalShare;
+  private Integer corporationShare;
+  private Integer totalShare;
   @Setter private int guests;
 
   public BillableCommunity(
