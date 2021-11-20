@@ -26,15 +26,27 @@ public class BillOperationService implements OperationService {
 
     billValue +=
         new CorporationBillGenerationService()
-            .generateBill(community.getTotalWaterConsumedInAMonth(), community.getRatio());
+            .generateBill(
+                community.getApartmentType().getNumberOfPeople(),
+                community.getAllocatedWaterPerPersonLts(),
+                community.getNumberOfBillableDaysInMonth(),
+                community.getRatio());
 
     billValue +=
         new BoreWellBillGenerationService()
-            .generateBill(community.getTotalWaterConsumedInAMonth(), 1 - community.getRatio());
+            .generateBill(
+                community.getApartmentType().getNumberOfPeople(),
+                community.getAllocatedWaterPerPersonLts(),
+                community.getNumberOfBillableDaysInMonth(),
+                1 - community.getRatio());
 
     billValue +=
         new TankWaterBillGenerationService()
-            .generateBill(community.getTotalWaterConsumedInAMonth(), 1);
+            .generateBill(
+                community.getGuests(),
+                community.getAllocatedWaterPerPersonLts(),
+                community.getNumberOfBillableDaysInMonth(),
+                1);
     bill.add(Integer.toString((int) Math.round(billValue)));
     return bill.toString();
   }
