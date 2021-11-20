@@ -66,6 +66,10 @@ dependencies {
     // lombok dependency
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+    // Log4j
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
+
     // Mockito
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
 }
