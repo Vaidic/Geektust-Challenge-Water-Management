@@ -1,6 +1,7 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.model;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.enums.ApartmentType;
+import in.vaidicjoshi.geektrust.backend.watermanagement.exception.WaterBillException;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -28,6 +29,9 @@ public abstract class BillableCommunity {
   }
 
   public void addGuests(int guests) {
+    if (!isInitializedBillableCommunity()) {
+      throw new WaterBillException("The apartment type is not yet defined");
+    }
     this.guests += guests;
   }
 
