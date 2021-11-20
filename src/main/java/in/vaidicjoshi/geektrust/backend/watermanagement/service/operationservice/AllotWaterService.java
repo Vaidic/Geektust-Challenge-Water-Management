@@ -1,4 +1,4 @@
-package in.vaidicjoshi.geektrust.backend.watermanagement.service;
+package in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.enums.ApartmentType;
 import in.vaidicjoshi.geektrust.backend.watermanagement.exception.WaterBillException;

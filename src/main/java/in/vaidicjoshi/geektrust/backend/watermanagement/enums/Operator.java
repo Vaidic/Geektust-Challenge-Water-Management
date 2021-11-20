@@ -1,9 +1,9 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.enums;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.service.AddGuestService;
-import in.vaidicjoshi.geektrust.backend.watermanagement.service.AllotWaterService;
-import in.vaidicjoshi.geektrust.backend.watermanagement.service.BillOperationService;
-import in.vaidicjoshi.geektrust.backend.watermanagement.service.OperationService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice.AllotWaterService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice.BillOperationService;
+import in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice.OperationService;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

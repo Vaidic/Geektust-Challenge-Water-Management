@@ -1,4 +1,4 @@
-package in.vaidicjoshi.geektrust.backend.watermanagement.service;
+package in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice;
 
 /**
  * @author Vaidic Joshi

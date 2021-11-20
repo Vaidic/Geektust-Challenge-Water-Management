@@ -1,4 +1,4 @@
-package in.vaidicjoshi.geektrust.backend.watermanagement.service;
+package in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.model.BillableCommunity;
 import lombok.Getter;
@@ -16,6 +16,6 @@ public class BillOperationService implements OperationService {
 
   @Override
   public String processOperation(List<String> arguments, BillableCommunity community) {
-    return null;
+    return
   }
 }

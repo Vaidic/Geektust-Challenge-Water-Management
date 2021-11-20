@@ -1,4 +1,4 @@
-package in.vaidicjoshi.geektrust.backend.watermanagement.service;
+package in.vaidicjoshi.geektrust.backend.watermanagement.service.operationservice;
 
 import in.vaidicjoshi.geektrust.backend.watermanagement.exception.WaterBillException;
 import in.vaidicjoshi.geektrust.backend.watermanagement.model.BillableCommunity;
