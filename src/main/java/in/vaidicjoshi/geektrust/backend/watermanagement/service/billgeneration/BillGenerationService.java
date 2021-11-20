@@ -1,6 +1,8 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.service.billgeneration;
 
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Vaidic Joshi
@@ -14,23 +16,28 @@ public abstract class BillGenerationService {
   }
 
   public double generateBill(int people, int lts, int days, double ratio) {
-    final double[] totalConsumption = {people * lts * days * ratio};
-    final double[] bill = {0.0};
-    maxUptoBillRate.keySet().stream()
-        .sorted()
-        .forEach(
-            key -> {
-              double currConsumption =
-                  (totalConsumption[0] - key) > 0
-                      ? key
-                      : totalConsumption[0] > 0 ? totalConsumption[0] : 0;
-              double rate = maxUptoBillRate.get(key);
-              bill[0] += rate * currConsumption;
-              totalConsumption[0] -= key;
-            });
-    if (totalConsumption[0] > 0) {
-      bill[0] += totalConsumption[0] * maxUptoBillRate.get(Integer.MAX_VALUE);
+
+    double totalConsumption = people * lts * days * ratio;
+    double bill = 0;
+    List<Integer> slabs = maxUptoBillRate.keySet().stream().sorted().collect(Collectors.toList());
+    int prevSlabLimit = 0;
+    for (int slab : slabs) {
+      int slabDiff = slab - prevSlabLimit;
+      double slabRate = maxUptoBillRate.get(slab);
+      if (totalConsumption > slabDiff) {
+        totalConsumption -= slabDiff;
+        bill += slabDiff * slabRate;
+      } else {
+        bill += totalConsumption * slabRate;
+        totalConsumption = 0;
+      }
+      prevSlabLimit = slab;
     }
-    return bill[0];
+    if (totalConsumption > 0) {
+      bill += totalConsumption * maxUptoBillRate.get(Integer.MAX_VALUE);
+      totalConsumption = 0;
+    }
+
+    return bill;
   }
 }

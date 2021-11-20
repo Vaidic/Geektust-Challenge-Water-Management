@@ -47,7 +47,7 @@ public class BillOperationService implements OperationService {
                 community.getAllocatedWaterPerPersonLts(),
                 community.getNumberOfBillableDaysInMonth(),
                 1);
-    bill.add(Integer.toString((int) Math.round(billValue)));
+    bill.add(Integer.toString((int) Math.ceil(billValue)));
     return bill.toString();
   }
 }

@@ -11,11 +11,15 @@
 [![releases](https://badgen.net/github/release/Vaidic/Geektust-Challenge-Water-Management)](https://github.com/Vaidic/Geektust-Challenge-Water-Management/releases)
 
 ## To run
+
 1. From project home run following command to build jar file:
+
 ```
 ./gradlew clean build
 ```
+
 2. Locate the `geektrust.jar` file in build/lib folder and execute
+
 ```
 java -jar geektrust.jar [path of input file]
 ```
