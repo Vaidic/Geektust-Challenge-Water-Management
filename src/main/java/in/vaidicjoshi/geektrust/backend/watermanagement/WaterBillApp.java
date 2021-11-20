@@ -6,6 +6,7 @@ import in.vaidicjoshi.geektrust.backend.watermanagement.model.GeekHeightsCommuni
 import in.vaidicjoshi.geektrust.backend.watermanagement.service.FileProcessorService;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -39,6 +40,7 @@ public class WaterBillApp {
                           .getOperationService()
                           .get()
                           .processOperation(command.getOperands(), geekHeightsCommunity))
+              .filter(Objects::nonNull)
               .collect(Collectors.toList());
       //       print output
       outputs.forEach(System.out::println);
