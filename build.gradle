@@ -24,11 +24,9 @@ jacocoTestReport { //Please do not change this
 
 jar {
     archiveBaseName = 'geektrust' //Please do not change this final artifact name
-    version = null               //Please do not change this final artifact version
-//    archiveBaseVersion = null     //Please do not change this final artifact version
+    version =  null               //Please do not change this final artifact version
     manifest {
-        attributes 'Main-Class': 'in.vaidicjoshi.geektrust.backend.watermanagement.WaterBillApp'
-        //Change this to the main class of your program which will be executed
+        attributes 'Main-Class' : 'in.vaidicjoshi.geektrust.backend.watermanagement.WaterBillApp' //Change this to the main class of your program which will be executed
     }
     // To create a single jar with all dependencies.
     from {
@@ -49,16 +47,16 @@ test { ///Please do not change this
     afterSuite { desc, result ->
         if (!desc.parent)
             println("${result.resultType} " +
-                    "(${result.testCount} tests, " +
-                    "${result.successfulTestCount} successes, " +
-                    "${result.failedTestCount} failures, " +
-                    "${result.skippedTestCount} skipped)")
-    }
+                "(${result.testCount} tests, " +
+                "${result.successfulTestCount} successes, " +
+                "${result.failedTestCount} failures, " +
+                "${result.skippedTestCount} skipped)")
+        }
 }
 
 
 repositories {
-    mavenCentral()
+     mavenCentral()
 }
 
 //Add your dependencies here
@@ -67,10 +65,6 @@ dependencies {
     // lombok dependency
     compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
-    // Log4j
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
-
     // Mockito
     testImplementation group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
 }
