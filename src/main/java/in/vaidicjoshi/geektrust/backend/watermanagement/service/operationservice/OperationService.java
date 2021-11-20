@@ -10,5 +10,6 @@ import java.util.List;
  * @date 20/11/21
  */
 public interface OperationService {
-  String processOperation(List<String> arguments, BillableCommunity community) throws WaterBillException;
+  String processOperation(List<String> arguments, BillableCommunity community)
+      throws WaterBillException;
 }

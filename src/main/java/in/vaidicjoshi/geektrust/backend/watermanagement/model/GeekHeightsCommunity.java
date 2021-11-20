@@ -15,8 +15,8 @@ public class GeekHeightsCommunity extends BillableCommunity {
   }
 
   @Override
-  public int getTotalPeople() {
-    ApartmentType room = (ApartmentType) getApartmentType();
+  public Integer getTotalPeople() {
+    ApartmentType room = getApartmentType();
     return room.getNumberOfPeople() + getGuests();
   }
 }

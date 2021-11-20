@@ -31,7 +31,7 @@ public abstract class BillableCommunity {
     this.guests += guests;
   }
 
-  public abstract int getTotalPeople();
+  public abstract Integer getTotalPeople();
 
   public void initializeBillableCommunity(
       @NonNull ApartmentType apartmentType, @NonNull Double ratio) {

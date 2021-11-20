@@ -21,7 +21,10 @@ public class AllotWaterService implements CommunityOperationService {
       throws WaterBillException {
     int numberOfRooms = Integer.parseInt(arguments.get(0));
     String[] split = arguments.get(1).split(":");
-    Double ratio = 1.0 * Integer.parseInt(split[0]) / Integer.parseInt(split[1]);
+    Double ratio =
+        1.0
+            * Integer.parseInt(split[0])
+            / (Integer.parseInt(split[1]) + Integer.parseInt(split[0]));
     community.initializeBillableCommunity(ApartmentType.fromNumberOfRooms(numberOfRooms), ratio);
     return null;
   }

@@ -13,7 +13,7 @@ public abstract class BillGenerationService {
     this.maxUptoBillRate = maxUptoBillRate;
   }
 
-  public double generateBill(int people, int lts, int days, int ratio) {
+  public double generateBill(int people, int lts, int days, double ratio) {
     final double[] totalConsumption = {people * lts * days * ratio};
     final double[] bill = {0.0};
     maxUptoBillRate.keySet().stream()
