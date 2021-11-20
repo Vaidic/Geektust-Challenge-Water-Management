@@ -1,6 +1,6 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.model;
 
-import in.vaidicjoshi.geektrust.backend.watermanagement.enums.Room;
+import in.vaidicjoshi.geektrust.backend.watermanagement.enums.ApartmentType;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -16,7 +16,7 @@ public abstract class BillableCommunity {
 
   @NonNull private final Integer allocatedWaterPerPersonLts;
   @NonNull private final Integer numberOfBillableDaysInMonth;
-  @Setter private Room room;
+  @Setter private ApartmentType apartmentType;
   @Setter private Double ratio;
 
   public BillableCommunity(
@@ -33,12 +33,13 @@ public abstract class BillableCommunity {
 
   public abstract int getTotalPeople();
 
-  public void initializeBillableCommunity(@NonNull Room room, @NonNull Double ratio) {
+  public void initializeBillableCommunity(
+      @NonNull ApartmentType apartmentType, @NonNull Double ratio) {
     this.ratio = ratio;
-    this.room = room;
+    this.apartmentType = apartmentType;
   }
 
   public boolean isInitializedBillableCommunity() {
-    return Objects.nonNull(room) && Objects.nonNull(ratio);
+    return Objects.nonNull(apartmentType) && Objects.nonNull(ratio);
   }
 }

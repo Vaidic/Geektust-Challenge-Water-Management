@@ -18,21 +18,21 @@ import java.util.stream.Collectors;
  */
 @RequiredArgsConstructor
 @Getter
-public enum GeekHeightsRoom implements Room {
+public enum ApartmentType {
   TW0_BEDROOM_APARTMENT(2, 3),
   THREE_BEDROOM_APARTMENT(3, 5);
   @NonNull private Integer numberOfRooms;
   @NonNull private Integer numberOfPeople;
 
-  private static Map<Integer, GeekHeightsRoom> lookup = new HashMap<>();
+  private static Map<Integer, ApartmentType> lookup = new HashMap<>();
 
   static {
     lookup =
-        Arrays.stream(GeekHeightsRoom.values())
-            .collect(Collectors.toMap(GeekHeightsRoom::getNumberOfRooms, Function.identity()));
+        Arrays.stream(ApartmentType.values())
+            .collect(Collectors.toMap(ApartmentType::getNumberOfRooms, Function.identity()));
   }
 
-  GeekHeightsRoom fromNumberOfRooms(int rooms) throws WaterBillException {
+  public static ApartmentType fromNumberOfRooms(int rooms) throws WaterBillException {
     return Optional.ofNullable(lookup.get(rooms))
         .orElseThrow(() -> new WaterBillException(WaterBillException.INVALID_COMMAND));
   }

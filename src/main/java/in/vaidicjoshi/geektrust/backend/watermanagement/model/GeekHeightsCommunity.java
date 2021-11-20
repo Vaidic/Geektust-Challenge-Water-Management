@@ -1,6 +1,6 @@
 package in.vaidicjoshi.geektrust.backend.watermanagement.model;
 
-import in.vaidicjoshi.geektrust.backend.watermanagement.enums.GeekHeightsRoom;
+import in.vaidicjoshi.geektrust.backend.watermanagement.enums.ApartmentType;
 import lombok.NonNull;
 
 /**
@@ -16,7 +16,7 @@ public class GeekHeightsCommunity extends BillableCommunity {
 
   @Override
   public int getTotalPeople() {
-    GeekHeightsRoom room = (GeekHeightsRoom) getRoom();
+    ApartmentType room = (ApartmentType) getApartmentType();
     return room.getNumberOfPeople() + getGuests();
   }
 }
