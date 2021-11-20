@@ -42,7 +42,7 @@ public class WaterBillApp {
               .collect(Collectors.toList());
       //       print output
       outputs.forEach(System.out::println);
-    } catch (WaterBillException | Exception e) {
+    } catch (Exception e) {
       System.out.println(e.getMessage());
     }
   }

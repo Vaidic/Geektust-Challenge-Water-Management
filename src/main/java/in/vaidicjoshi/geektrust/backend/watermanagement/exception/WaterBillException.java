@@ -4,7 +4,7 @@ package in.vaidicjoshi.geektrust.backend.watermanagement.exception;
  * @author Vaidic Joshi
  * @date 20/11/21
  */
-public class WaterBillException extends Throwable {
+public class WaterBillException extends RuntimeException {
   private static final long serialVersionUID = -195628261663783819L;
   public static final String INVALID_COMMAND = "INVALID_COMMAND";
 
